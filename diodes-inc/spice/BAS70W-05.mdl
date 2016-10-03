@@ -1,0 +1,3 @@
+*SRC=BAS70W-05;DI_BAS70W-05;Diodes;Si;  70.0V  70.0mA  5.00ns   Diodes Inc. Schottky diode, dual, one node of two
+.MODEL DI_BAS70W-05 D  ( IS=99.5p RS=0.600 BV=70.0 IBV=10.0u
++ CJO=2.00p  M=0.333 N=1.70 TT=7.20n )

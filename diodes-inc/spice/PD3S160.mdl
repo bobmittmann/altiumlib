@@ -1,0 +1,3 @@
+*SRC=PS3S160;DI_PD3S160;Diodes;Si;  60.0V  1.00A  13.0ns   Diodes INC Schottky rectifier
+.MODEL DI_PD3S160 D  ( IS=82.7n RS=57.6m BV=60.0 IBV=100u
++ CJO=92.2p  M=0.333 N=1.09 TT=18.7n )

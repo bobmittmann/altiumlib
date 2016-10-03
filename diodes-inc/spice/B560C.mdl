@@ -1,0 +1,3 @@
+*SRC=B560C;DI_B560C;Diodes;Si;  60.0V  5.00A  5.00ns   Diodes Inc. Schottky 
+.MODEL DI_B560C D  ( IS=66.7u RS=14.1m BV=60.0 IBV=500u 
++ CJO=497p  M=0.333 N=1.70 TT=7.20n )

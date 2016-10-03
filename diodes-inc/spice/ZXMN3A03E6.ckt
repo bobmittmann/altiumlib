@@ -1,0 +1,47 @@
+*
+*ZETEX ZXMN3A03E6 Spice Model v2.0 Last revision 15/03/07
+*
+.SUBCKT ZXMN3A03E6 30 40 50
+*------connections-------D-G-S
+M1 6 20 5 5 Nmod
+M2 5 20 5 6 Pmod
+RG 4 2 1
+RIN 2 5 1E12
+RD 3 6 Rmod1 0.04
+RL 3 5 1E8
+C1 2 5 2E-11
+C2 3 4 1E-12
+D1 5 3  Dbodymod
+Egt1 2 20 21 5 1.0
+Vgt1 5 22 1.0
+Igt1 5 21 1.0
+Rgt 21 22 Rmod2 1.8
+LD 3 30 0.3E-9
+LG 4 40 1.9E-9
+LS 5 50 1.9E-9
+.MODEL Nmod NMOS (LEVEL=3 L=0.7E-6 W=0.77 TOX=60E-9 NSUB=2.58E16 UO=1022)
++VTO=1.2 KP=65E-6 GAMMA=1.61 PHI=0.74 RS=0.035 KAPPA=0.03 NFS=2.0E12 RD=0.03)
+.MODEL Pmod PMOS (LEVEL=3 L=1.2E-6 W=1.0 TOX=64E-9 NSUB=2.58E16 UO=396)
+.MODEL Dbodymod D (IS=1.5E-10 N=1.13 RS=0.06 IKF=0.3 XTI=0.1 TRS1=6E-3
++TIKF=6E-2 CJO=1E-12)
+.MODEL Rmod1 RES (TC1=1E-5 TC2=1E-6)
+.MODEL Rmod2 RES (TC1=4E-4 TC2=1E-6)
+.ENDS ZXMN3A03E6
+*
+*$
+*
+*                (c)  2007 Zetex Semiconductors plc
+*
+*   The copyright in these models  and  the designs embodied belong
+*   to Zetex Semiconductors plc (" Zetex ").  They  are  supplied
+*   free of charge by Zetex for the purpose of research and design
+*   and may be used or copied intact  (including this notice)  for
+*   that purpose only.  All other rights are reserved. The models
+*   are believed accurate but  no condition  or warranty  as to their
+*   merchantability or fitness for purpose is given and no liability
+*   in respect of any use is accepted by Zetex PLC, its distributors
+*   or agents.
+*
+*   Zetex Semiconductors plc, Zetex Technology Park, Chadderton,
+*   Oldham, United Kingdom, OL9 9LL
+

@@ -1,0 +1,4 @@
+*SRC=1N5819HW;DI_1N5819HW;Diodes;Si;  40.0V  1.00A  5.00ns   Diodes Inc.
+Schottky
+.MODEL DI_1N5819HW D  ( IS=191u RS=42.0m BV=40.0 IBV=1.00m
++ CJO=239p  M=0.333 N=1.70 TT=7.20n )

@@ -1,0 +1,3 @@
+*SRC=SD103AW;DI_SD103AW;Diodes;Si;  40.0V  0.350A  10.0ns   Diodes Inc. Schottky 
+.MODEL DI_SD103AW D  ( IS=8.65u RS=0.120 BV=40.0 IBV=5.00u 
++ CJO=53.0p  M=0.333 N=1.70 TT=14.4n )
