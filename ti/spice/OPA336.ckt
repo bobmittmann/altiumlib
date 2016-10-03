@@ -1,0 +1,242 @@
+*
+
+*
+
+*  ------------------------------------------------------------------------ 
+
+* |  NOTICE: THE INFORMATION PROVIDED HEREIN IS BELIEVED TO BE RELIABLE;   |
+
+* |  HOWEVER; BURR-BROWN ASSUMES NO RESPONSIBILITY FOR INACCURACIES OR     |
+
+* |  OMISSIONS.  BURR-BROWN ASSUMES NO RESPONSIBILITY FOR THE USE OF THIS  |
+
+* |  INFORMATION, AND ALL USE OF SUCH INFORMATION SHALL BE ENTIRELY AT     |
+
+* |  THE USER'S OWN RISK.  NO PATENT RIGHTS OR LICENSES TO ANY OF THE      |
+
+* |  CIRCUITS DESCRIBED HEREIN ARE IMPLIED OR GRANTED TO ANY THIRD PARTY.  |
+
+* |  BURR-BROWN DOES NOT AUTHORIZE OR WARRANT ANY BURR-BROWN PRODUCT FOR   |
+
+* |  USE IN LIFE-SUPPORT DEVICES AND/OR SYSTEMS.                           |
+
+*  ------------------------------------------------------------------------ 
+
+*
+
+*
+
+*
+
+* SUBCIRCUIT MACROMODEL OPA336  
+
+* PSpice ver. 6.3
+
+* REV A. CREATED Wednesday, June 18, 1997 RH
+
+* REV B. 25 JUNE 97 NPA: COMPILED INTO OPA336.MOD  
+
+* REV C. 26 JUNE 97 NPA: EDITED NODE SYNTAX AND ADDED .OPTION NOTES
+
+*
+
+*  Notes concerning using macromodel to simulate OPA336:
+
+*  1) Model is actually a simplified schematic of OPA336.
+
+*  2) Model was created with PSpice ver. 6.3, level 3 device models.
+
+*  3) Operation of the circuit is assumed to be single supply
+
+* 
+
+*	Example:  X_U1   1    2   3  0  5  OPA336
+
+*
+
+*      Where U is the subcircuit name and 
+
+*                 connections:   non-inverting input
+
+*      		                 |  inverting input
+
+*		                 |  |  positive power supply
+
+*		                 |  |  |   negative power supply
+
+*		                 |  |  |   |   output
+
+*		                 |  |  |   |   |
+
+*		.subckt OPA336  1  2  3   4   5
+
+*
+
+*  Note that node "4" may be connected to ground "0", i.e., single supply operation.
+
+*
+
+*  4) ADD .OPTION ITL=40 AND .OPTION GMIN=10p TO NET LIST IF SIMULATION DOES NOT
+
+*      CONVERGE
+
+*  5) ADDING .NODESET STATEMENT (BELOW) TO NET LIST MAY HELP CONVERGENCE IS CASES
+
+*      WHERE V+=5V AND V-=0V ; SINGLE SUPPLY OPERATION. ASSUMES SUBCIRCUIT IS "U1". 
+
+*
+
+* .NODESET
+
+* +V(2)    = 2.5  V(1)    = 2.5  V(5)    = 2.5   V(3)   = 5.0
+
+* +V(X_U1.20)= 3.8  V(X_U1.23)= 3.8  V(X_U1.25)= .834  V(X_U1.27)= .833 V(X_U1.29)= .834
+
+* +V(X_U1.32)= 2.03 V(X_U1.34)= 2.03 V(X_U1.43)= 4.065 V(X_U1.44)= 2.51 V(X_U1.45)= 1.93 
+
+* +V(X_U1.47)= 1.93 V(X_U1.51)= .848  V(X_U1.53)= 4.07 V(X_U1.54)= 1.58 V(X_U1.55)= 4.02 
+
+* +V(X_U1.60)= 1.94 V(X_U1.62)= .855  V(X_U1.64)= 3.17 V(X_U1.67)= 4.98 V(X_U1.76)= 2.51 
+
+* +V(X_U1.GNDS)= 0.0 V(0)= 0.0
+
+*
+
+*
+
+* connections:   non-inverting input
+
+*                |  inverting input
+
+*                |  |  positive power supply
+
+*                |  |  |   negative power supply
+
+*                |  |  |   |   output
+
+*                |  |  |   |   |
+
+.subckt OPA336  1 2 3 4 5
+
+*
+
+M61      4 64 55 55  PCH W=20U L=0.8U     M=1  
+
+M59      55 53 3  3 PCH W=15U L=5U     M=4  
+
+M55      55 60 51  GNDS NCH W=5U L=0.8U     M=1  
+
+M53      53 45 51  GNDS NCH W=5U L=0.8U     M=1  
+
+M57      53 53 3  3 PCH W=15U L=5U     M=2  
+
+C55      55 60  CP1P2 2P
+
+M67      55 55 67  3 PCH W=5U L=5U     M=1  
+
+M74      45 51 62  GNDS NCH W=5U L=1U     M=1  
+
+R67      3 67  RNW 200K
+
+R47      45 47  RPO2 2K
+
+ITAIL    3 23  DC 6U AC 0
+
+ITAIL2   27 4  DC 1.6U AC 0
+
+ITAIL3   51 4  DC 0.8U AC 0
+
+I60      3 60  DC 0.4U AC 0
+
+RGNDS    GNDS 4  0.01
+
+M24      29 1  23 3  PCH W=90U L=2U AD=2560P PD=3328U AS=2688P PS=3494U M=1  
+
+M26      29 27 4  GNDS NCH W=500U L=2U AD=1142P PD=1670U AS=1142P PS=1670U M=1  
+
+I20      20 4  DC 1U AC 0
+
+R20      3 20  1.2MEG
+
+M20      4 20 23  3 PCH W=5U L=2U     M=1  
+
+R32      32 25  1.2MEG
+
+R34      34 29  1.2MEG
+
+I34      3 34  DC 1U AC 0
+
+I32      3 32  DC 1U AC 0
+
+V64      3 64  DC 1.8302
+
+V60      60 62  DC 1.0897
+
+V62      62 4  DC .8547
+
+M23      25 2  23 3  PCH W=90U L=2U AD=2560P PD=3328U AS=2688P PS=3494U M=1  
+
+M47      43 43 3  3 PCH W=60U L=4U     M=1  
+
+M43      43 34 27  GNDS NCH W=4U L=4U     M=1  
+
+M45      45 32 27  GNDS NCH W=4U L=4U     M=1  
+
+M73      76 51 4  GNDS NCH W=5U L=0.8U     M=20  
+
+M25      25 27 4  GNDS NCH W=500U L=2U AD=1142P PD=1670U AS=1142P PS=1670U M=1  
+
+M71      76 55 3  3 PCH W=20U L=0.8U     M=20  
+
+M49      45 43 3  3 PCH W=60U L=4U     M=1  
+
+RC1      44 76  RPO2 10K
+
+R76      76 5   RPO2 100
+
+CM1      29 44  CP1P2 200P
+
+C45      47 76  CP1P2 22P
+
+RC2      54 4  RPO2 10K
+
+CM2      25 54  CP1P2 200P
+
+
+
+* MODELS for LEVEL 3 PSpice
+
+*
+
+.MODEL PCH PMOS (LEVEL=3 TOX=30E-9 CGDO=1.80e-10 CGSO=1.80e-10 CJ=7.199E-4 CJSW=3.40E-10
+
++AF=1.05 KF=1.0e-31 JS=4.0e-7 JSSW=3.0e-13 RSH=117 MJ=.47 MJSW=.16 VFB=-0.34 PHI=0.71 VTO=-.892
+
++LD=12E-9 WD=43E-9 TPG=+1 GAMMA=0.6)
+
+
+
+.MODEL NCH NMOS (LEVEL=3 TOX=30E-9 CGDO=1.55e-10 CGSO=1.55e-10 CJ=6.300E-4 CJSW=3.83E-10
+
++AF=1.05 KF=2.6e-31 JS=2.0e-7 JSSW=5e-13 RSH=68 MJ=.25 MJSW=.11 VFB=-0.784 PHI=0.792 VTO=.81
+
++LD=34E-9 WD=17E-9 TPG=-1 GAMMA=0.6)
+
+
+
+.MODEL RPO2 RES (R=1 TC1=6.3e-4 TC2= 1.1e-6)
+
+.MODEL RNW  RES (R=1 TC1=5.5e-3 TC2=-1.3e-5)
+
+.MODEL CP1P2 CAP (C=1)
+
+.ENDS
+
+.ENDS OPA336
+
+*
+
+*
+
+
+

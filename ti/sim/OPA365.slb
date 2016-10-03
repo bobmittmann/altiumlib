@@ -1,0 +1,56 @@
+*version 8.0 711089879
+@index
+symloc OPA365 0 1076
+*symbol OPA365
+d R/R I/O 50MHz CMOS Op Amp with no in x-over
+@type p 8.0
+@attributes
+a 0 sp 9 0 2 -8 hln 100 REFDES=U?
+a 0 sp 11 0 16 34 hln 100 PART=OPA365
+a 0 sp 0 0 0 0 hln 100 MODEL=OPA365
+a 0 sp 0 0 0 0 hln 100 TEMPLATE=X^@REFDES %3 %4 %5 %2 %1 @MODEL
+@pins
+p 0 20 54 hrn 100 3 n 0 50 h
+a 0 s 0:1 0 7 46 hrn 100 PIN=3
+a 0 s 0 0 0 50 hln 100 ERC=i
+a 0 s 0 0 0 50 hln 100 FLOAT=e
+p 0 12 12 hln 100 4 n 0 10 h
+a 0 s 0:1 0 7 20 hrn 100 PIN=4
+a 0 s 0 0 0 10 hln 100 ERC=i
+a 0 s 0 0 0 10 hln 100 FLOAT=e
+p 0 50 0 hct 100 5 n 40 0 d
+a 0 s 0:1 0 38 7 hrn 100 PIN=5
+a 0 s 0 0 40 0 hln 100 ERC=p
+a 0 s 0 0 40 0 hln 100 FLOAT=e
+p 0 44 58 hln 100 2 n 40 60 v
+a 0 s 0:1 0 32 61 hlb 100 PIN=2
+a 0 s 0 0 40 60 hln 100 ERC=p
+a 0 s 0 0 40 60 hln 100 FLOAT=e
+p 0 56 36 hrn 100 1 n 80 30 u
+a 0 s 0:1 0 71 28 hln 100 PIN=1
+a 0 s 0 0 80 30 hln 100 ERC=o
+a 0 s 0 0 80 30 hln 100 FLOAT=r
+@graphics 80 60 0 10 10
+v 0 10 60
+70 30
+;
+v 0 70 30
+10 0
+;
+v 0 10 0
+10 60
+;
+v 0 40 10
+40 15
+;
+v 0 40 50
+40 45
+;
+z 26 12 54 hln 100 1
++
+z 26 12 16 hln 150 1
+-
+z 26 44 12 hln 100 2
+V+
+z 26 42 58 hln 100 2
+V-

@@ -1,0 +1,20 @@
+*
+* This spice model was created using the Altium Spice Model Wizard
+* Created: 1:51 PM on 14 February, 2013
+*
+* Component Name: LCWJNSHEC
+*
+.MODEL LCWJNSHEC D
++(
++     IS = 1.5139E-0008
++      N = 8.3634
++     RS = 4.3567
++)
+
+* Spice model LCWJNSHEC has been assigned the following parameters:
+
+* Forward-Bias Diode Current Parameters
+*     IS: Saturation Current..................(Unit: A)
+*      N: Emission Coefficient
+*     RS: Ohmic Resistance....................(Unit: Ohm)
+

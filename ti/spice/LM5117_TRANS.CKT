@@ -1,0 +1,552 @@
+*$
+*  LM5117
+****************************************************************************
+*  (C) Copyright 2014 Texas Instruments Incorporated. All rights reserved.
+****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of 
+** merchantability or fitness for a particular purpose.  The model is
+** provided solely on an "as is" basis.  The entire risk as to its quality
+** and performance is with the customer
+****************************************************************************
+*
+** Released by: WEBENCH Design Center, Texas Instruments Inc.
+* Part: LM5117	
+* Date: 15SEP2014
+* Model Type: TRANSIENT
+* Simulator: PSPICE
+* Simulator Version: 16.2.0.p001
+* EVM Order Number: LM5117 Evaluation Board
+* EVM Users Guide: SNVA466B – May2011 – Revised April 2013
+* Datasheet: SNVS698E – APRIL 2011 – REVISED MARCH 2013
+*
+* Model Version: Final 1.10
+*
+****************************************************************************
+*
+* Updates:
+*
+* Final 1.10
+* Implemented the CM, VCCDIS and Hiccup current limit.
+*
+* Final 1.00
+* Release to Customer.
+*
+****************************************************************************
+.SUBCKT LM5117_TRANS HB COMP CS CSG DEMB FB AGND HO LO PGND RAMP RT_SYNC SS 
++ SW VCC UVLO VIN RES VCCDIS EP CM
+VRRTT RT RT_SYNC 
+X_CL Ilim_1 GEN HICCUP ILIM RES HO LO VIN GND VRAMP SS HICCUP_SS 
++ FOR_CL_HIERARCHY 
+X_VCC GND VCC VCCDIS VIN FOR_VCC
+.MODEL _SCM_mod VSWITCH VON=0.5 VOFF=0.2 ROFF=100MEG RON=1u
+ETRACK TRACK_1 AGND VALUE =  { -(V(CS,CSG)*20.87)+0.0184}
+S_S1     N00045 TRACK_1 LO GND _SCM_mod 
+R_R1         N00045 N00103  1 TC=0,0 
+C_C1         GND N00103  0.2m  TC=0,0 
+R_R2         GND CM  40k TC=0,0 
+E_E1         CM 0 N00103 CM 20k
+EB10 GEN GND Value {if(V(STANDBY) < 2.5 , 5 , 0)}
+D3 13 0 _D3_mod
+.MODEL _D3_mod D IS=1e-21 N=2.7
+XA13 CLK_Din 3 INVERTERA13
+XA13_Din_CLK CLK CLK_Din A2D
+EB3 SS08 GND Value { if(V(SS)<V(Vref),V(ss),V(Vref)) }
+IMY GND SS 10u
+DMY GND SS_ref _D 
+.MODEL _D D IS=1f RS=1m
+VRefMY SS_ref GND 3
+D5 0 13 _D5_mod
+.MODEL _D5_mod D IS=1.0e-16 VJ=.31
+V10 27 13
+X21 VRamp_911 79 PWM COMPARX21
+V911 Vramp_911 Vramp 0.1
+R28 LO1 LO 2
+EB8 9 GND Value {V(HO,SW)}
+X5 SW 52 ZC COMPARX21
+XA8 LOD 55_Din ZC_Din ZCLO_Dout NAND3A8
+X_ASS 46_1 HICCUP_SS 46 OR2A
+XA8_Din_55 55 55_Din A2D
+XA8_Din_ZC ZC ZC_Din A2D
+X_A8_Dout_ZCLO ZCLO_Dout ZCLO D2Ag
+EBDembThresh 75 0 Value { if(V(SS) < 0.8 , 15 , 2.75)}
+XVCO1  RT CLK CLK_GEN
+S5 SS 0 46 GND _S5_mod
+.MODEL _S5_mod VSWITCH VT=2.5 RON=.001 ROFF=1MEG
+EB13 30 GND Value {V(ramp)}
+VIlim 32 GND DC=1.2
+XIlimComp VRamp 32 Ilim_1 ComparatorIlimComp 
+R27 61 75 10 
+S3 4 GUVLO HB SW _S3_mod
+.MODEL _S3_mod VSWITCH VT=4.5 VH=0.25 ROFF=100MEG
+V5 4 GND DC=5
+R15 GUVLO GND 1Meg
+XA10 28_Din 46_Dout INVERTERA13
+XA10_Din_28 28 28_Din A2D
+X_A10_Dout_46 46_Dout 46_1 D2Ag
+C4 VRamp 30 100p
+R7 ZCLOQ GND 100k
+EBStandby STANDBY GND Value {if(V(UVLO) < 1.25 , 5 , if(V(VCC) < 4.5 ,
++ 5 ,0))}
+EB2 HO1 SW VALUE={ if ((V(GEN) > 1) & (V(H) > 2.5) , V(HB,SW) , 0)}
+EB6 LO PGND VALUE={if((V(GEN)>1) & (V(L) > 2.5) & (V(ZCLOQ) < 2.5) ,
++ V(VCC),0)}
+C21 61 0 100p
+.MODEL QPL PNP AF=1 BF=100 BR=1 CJE=0 CJC=0 CJS=0 EG=1.11 FC=0.5 
++ IS=1E-9 
++ MJC=0.33 MJE=0.33
++ ISC=0 ISE=0 ITF=0 KF=0 MJS=0 PTF=0 RB=0 RBM=0 RC=0 RE=0 TF=0 XTB=0 
++ XTF=0 
++ NC=2 NE=1.5 NF=1 NR=1 TNOM=27 VJC=0.75 VJE=0.75 VJS=0.75 XCJC=1 
++ XTI=3 NK=0.5
+.MODEL _Q3_mod PNP AF=1 BF=100 BR=1 CJE=0 CJC=0 CJS=0 EG=1.11 
++ FC=0.5 IS=1E-9 
++ MJC=0.33 MJE=0.33
++ ISC=0 ISE=0 ITF=0 KF=0 MJS=0 PTF=0 RB=0 RBM=0 RC=0 RE=0 
++ TF=0 XTB=0 XTF=0 
++ NC=2 NE=1.5 NF=1 NR=1 TNOM=27 VJC=0.75 VJE=0.75 VJS=0.75 
++ XCJC=1 XTI=3 NK=0.5
+EBramp 28 GND VALUE={ if(V(GEN) > 2.5 , 3 , 0)}
+XA1  Rzzz QB  Q NOR2A
+X3 61 DEMB 55 COMPARX5
+EB1 62 GND Value {if(V(SS) > 3 , 5 , 0)}
+STrack track VRamp CLK GND _TRACK
+.MODEL _TRACK VSWITCH VT=2.5 RON=100m
+S2 RAMP GND HOENB GND _S1_mod
+.MODEL _S1_mod VSWITCH VT=2.5 RON=10m
+GTrack GND track CSG CS {10*1e-3}
+R14 track GND 1k
+XA14 3 Q  HEN AND2A
+R25 HO1 HO 2
+XA3 57_Dout LOGIC0A3
+X_A3_Dout_57 57_Dout 57 D2Ag
+C6 HO SW 1p
+XA16 PWM_Din Ilim_Din Rzzz OR2A
+XA16_Din_PWM PWM PWM_Din A2D
+XA16_Din_Ilim Ilim_1 Ilim_Din A2D
+V3 GND 0
+XA2 Q CLK_Din  QB NOR2A
+D1 COMP 78 _D2_mod
+.MODEL _D2_mod D N=1.09
+V6 Vref GND DC=.8
+X2 65 57 LEN ZCLO ZCLOQ ZQL DFLOPB
+D2 78 79 _D2_mod
+XA4 65_Dout LOGIC1A4
+X_A4_Dout_65 65_Dout 65 D2Ag
+XA5 62_Din SSLatch  69 NOR2A
+XA5_Din_62 62 62_Din A2D
+XA7 69 STANDBY_Din SSLatch NOR2A
+XA7_Din_STANDBY STANDBY STANDBY_Din A2D
+C2 LRC GND 10p
+R26 LRC LO1 10k
+R8 79 GND 100k
+C7 LO PGND 1p
+D4 LRC LO1 _D4_mod
+.MODEL _D4_mod D RS=10
+XA9 LRC_Din LOD BUFFERA9
+XA9_Din_LRC LRC LRC_Din A2D
+Rdemb DEMB 0 50k
+XA17 9_Din HOENB_Dout INVERTERA13
+XA17_Din_9 9 9_Din A2D
+X_A17_Dout_HOENB HOENB_Dout HOENB D2Ag
+VDembTrip 0 52 DC=.005
+G2 0 27 SS08 FB 10m
+R17 13 0 1MEG
+C17 13 0 .53n IC=2
+E1 COMP 0 13 0 1
+R19 0 0 10
+X7 LOF HOR DELAY PARAMS: TD=62n 
+X8 LEN LEM DELAY  PARAMS: TD=150n 
+X10 HOF LOR DELAY PARAMS: TD=55n 
+XA18  HOR_Din HEN  H_Dout AND2A
+XA18_Din_HOR HOR HOR_Din A2D
+X_A18_Dout_H H_Dout H D2Ag
+XA19 LEM_Din LEN_Din 73 AND2A
+XA19_Din_LEM LEM LEM_Din A2D
+XA20 LEN_Din LOR_Din 82 AND2A
+XA20_Din_LEN LEN LEN_Din A2D
+XA20_Din_LOR LOR LOR_Din A2D
+XA21 HEN LEN_Dout INVERTERA13
+X_A21_Dout_LEN LEN_Dout LEN D2Ag
+XA22 73 82 L_Dout OR2A
+X_A22_Dout_L L_Dout L D2Ag
+EB7 HOF GND Value {if(V(SW) < 0.5*V(VCC) , 5 , 0)}
+EB9 LOF GND Value {if(V(LO) < 0.25*V(VCC) , 5 , 0)}
+R12 L GND 100k
+R23 H GND 100k
+.ENDS LM5117_TRANS
+*$
+.SUBCKT COMPARX21 NINV INV OUT
+EB1 4 0 Value = {if(V(NINV,INV) > 0 , 5 , 0)}
+RO 4 OUT 1m
+CO OUT 0 1PF
+.ENDS
+*$
+.SUBCKT ComparatorIlimComp NINV INV OUT 
+EB2 HYS NINV Value {if( V(OUT) > 2.5, 50m , 0)}
+EB1 4 0 Value { if(V(HYS,INV) > 0 , 5 , 0)}
+RO 4 OUT 1m
+CO OUT 0 1PF
+.ENDS
+*$
+.SUBCKT COMPARX5 NINV INV OUT
+EB1 4 0 Value {if(V(NINV,INV) > 0 , 5 , 0)}
+RO 4 OUT 1
+CO OUT 0 10n
+.ENDS
+*$
+.SUBCKT DELAY 1 3 PARAMS: TD=62n
+RIN 1 2 1E4
+C1 2 0 {TD/(2.3*1E4)}
+E1 3 0 2 0 1
+.ENDS
+*$
+.SUBCKT D2Ag in out
+XA1 in 1 D2A
+R1 1 out 15
+.ENDS
+*$
+.SUBCKT INVERTERA13 1 2 
+EB1 3 0 VALUE {IF( V(1) > 1.5, 0.3, 3.5)}
+R1 3 2 1
+C1 2 0 10n IC=3.5000
+.ENDS
+*$
+.SUBCKT A2D 1 2 
+EBADC 2 0 Value { if(V(1,0) < 0.6 , 0.3 , if( V(1,0) >= 3 ,
++  3.5 , 1.5)) }
+.ENDS
+*$
+.SUBCKT NAND3A8 1 2 3 4 
+EB1 5 0  VALUE {IF(V(1) > 1.5 & V(2) > 1.5 & V(3) > 1.5, 
++ 0.3, 3.5)}
+R1 5 4 100
+C1 4 0 10P IC=3.5
+.ENDS
+*$
+.SUBCKT D2A 1 2 
+EBDAC 2 0 Value { if(V(1, 0) < 0.5 , 0.2 , if(V(1, 0) > 3.0 ,
++  3.5 , 1.8)) }
+.ENDS
+*$
+.SUBCKT AND2A 1 2 4
+EB1 5 0  VALUE {IF(V(1) > 1.5 & V(2) > 1.5, 3.5, 0.3)}
+R1 5 4 1
+C1 4 0 10n IC=0.0
+.ENDS
+*$
+.SUBCKT OR2A 1 2 4
+EB1 5 0  VALUE {IF(V(1) > 1.5 | V(2) > 1.5, 3.5, 0.3)}
+R1 5 4 1
+C1 4 0 10n IC=0.0
+.ENDS
+*$
+.SUBCKT NOR2A 1 2 4
+EB1 5 0  VALUE {IF(V(1) > 1.5 | V(2) > 1.5, 0.3, 3.5)}
+R1 5 4 1
+C1 4 0 10n IC=0.0
+.ENDS
+*$
+.SUBCKT LOGIC0A3 1 
+VPULLUP 1 0 0.3
+.ENDS
+*$
+.SUBCKT LOGIC1A4 1 
+VPULLUP 1 0 3.5
+.ENDS
+*$
+.SUBCKT BUFFERA9 1 2 
+EADC 3 0 1 0 1.0
+R1 3 2 1
+C1 2 0 10n 
+.ENDS
+*$
+.SUBCKT Si7850DPM1 D G S
+V1 D 4
+V2 G 1
+V3 S 2
+M1 3 1 2 2 NMOS W=1611091u L=0.40u
+M2 2 1 2 4 PMOS W=1611091u L=0.62u
+R1 4 3 66E-4 TC=11.5E-3,5.5E-6
+CGS 1 2 520E-12
+DBD 2 4 DBD
+.MODEL NMOS NMOS (LEVEL = 3 TOX = 7E-8
++ RS = 88E-4 RD = 0 NSUB = 1.44E17
++ KP = 2.1E-5 UO = 650
++ VMAX = 0 XJ = 5E-7 KAPPA = 7E-1
++ ETA = 1E-4 TPG = 1
++ IS = 0 LD = 0
++ CGSO = 0 CGDO = 0 CGBO = 0
++ NFS = 0.8E12 DELTA = 0.1)
+.MODEL PMOS PMOS (LEVEL = 3 TOX = 7E-8
++NSUB = 2E16 TPG = -1)
+.MODEL DBD D (CJO=500E-12 VJ=0.38 M=0.4
++RS=0.1 FC=0.5 IS=1E-12 TT=4.8E-8 N=1 BV=60.5)
+.ENDS
+*$
+.SUBCKT D8_EXT A C
+D5 A C _D8E_mod
+.MODEL _D8E_mod D AF=1 CJO=2.667776e-11 EG=1.11 
++FC=0.5 IBV=10e-6 IS 2.843488e-9 KF=0 M=388.7e-3 N=1.091 
++RS=4.21e-1 TNOM=25 TT=0 VJ=632.1e-3 XTI=3 IBVL=0  
++ISR=0 NBV=1 NBVL=1 NR=2 TBV1=0 TBV2=0 TRS1=0 TRS2=0
+*+CV=100 IKF=inf
+.ENDS
+*$
+.SUBCKT DFLOPB 1 2 3 4 5 6
+*CLRN D CLK PREN Q QN
+X1 4 12 11 13 NAND3_0 
+X2 13 1 3 11 NAND3_1 
+X3 11 3 12 10 NAND3_0 
+X4 10 1 2 12 NAND3_1 
+X5 4 11 6 5 NAND3_0 
+X6 5 1 10 6 NAND3_1
+.ENDS
+*$
+.SUBCKT NAND3_0 1 2 3 4
+EB2 6 0 4 0 100
+EB1 5 0  VALUE {IF(V(1) > 1.5 & V(2) > 1.5 & V(3) > 1.5, 
++ 0.3, 3.5)}
+R1 5 4 200
+C1 4 0 20P IC=0
+.ENDS
+*$
+.SUBCKT NAND3_1 1 2 3 4
+EB2 6 0 4 0 100
+EB1 5 0  VALUE {IF(V(1) > 1.5 & V(2) > 1.5 & V(3) > 1.5,
++  0.3, 3.5)}
+R1 5 4 200
+C1 4 0 20P IC=3.5
+.ENDS
+*$
+.SUBCKT CLK_GEN RT CLK
+IS1         0 RT 1U
+XU6         4 3 RT VCR_0
+XU5         4 3 D_D1_0
+C2          3 0 1U 
+XU2         5 4 INV_0
+R5          6 0 1G 
+XU4         6 5 RT VCR_1
+XU3         5 3 CLK AND_0
+XU1         7 6 5 COMPARATOR_0
+C1          6 0 1U 
+R2          0 7 1K 
+R1          7 5 1K 
+.ENDS
+*$
+.SUBCKT VCR_0  1 2 RT
+G1 1 2 VALUE {(V(1,2)*3.604)*2/(250*V(RT)+237E-3)}
+.ENDS
+*$
+.SUBCKT D_D1_0  1 2
+D1 1 2 DD1
+.MODEL DD1 D
++ IS=1E-011
++ TT=1E-09
++ RS=0
++ N=1.1
+.ENDS D_D1_0 
+*$
+.SUBCKT INV_0  IN OUT
+E1 OUT 0 VALUE {IF(V(IN)>0 , -12 , 12)}
+.ENDS
+*$
+.SUBCKT VCR_1  1 2 RT
+G1 1 2 VALUE {((V(1,2)*2*5.712*1E-3)/(V(RT)+948*1E-6))}
+.ENDS
+*$
+.SUBCKT AND_0  1 2 OUT
+E1 OUT 0 VALUE {IF(V(1)>0 & V(2)>0, 3.5 , 0.3)}
+.ENDS   
+*$
+.SUBCKT COMPARATOR_0  P N Y
+E1 Y 0 VALUE {IF(V(P,N)>0,12,-12)}
+.ENDS
+*$
+.SUBCKT ONE_SHOT IN OUT PARAMS:T=100
+S_S1         MEAS 0 RESET2 0 S1
+E_ABM1         CH 0 VALUE { if( V(IN)>0.5 | V(OUT)>0.5,1,0)}
+R_R2         RESET2 RESET  0.1  
+E_ABM3         OUT 0 VALUE { if( V(MEAS)<0.5 & V(CH)>0.5,1,0)}
+R_R1         MEAS CH  {T} 
+C_C2         0 RESET2  1.4427n  
+C_C1         0 MEAS  1.4427n  
+E_ABM2         RESET 0 VALUE { if(V(CH)<0.5,1,0)    }
+.MODEL         S1 VSWITCH Roff=1e9 Ron=1.0 Voff=0.25V Von=0.75V
+.ENDS
+*$
+.SUBCKT srlatchrhp_basic_gen s r q qb PARAMS: vdd=1 vss=0 
++ vthresh=0.5 
+gq 0 qint value = {if(v(r) > {vthresh},-5,if(v(s)>{vthresh},
++ 5, 0))}
+cqint qint 0 1n
+rqint qint 0 1000meg
+d_d10 qint my5 d_d1
+v1 my5 0 {vdd}
+d_d11 myvss qint d_d1
+v2 myvss 0 {vss} 
+eq qqq 0 qint 0 1
+x3 qqq qqqd1 buf_basic_gen PARAMS: vdd={vdd} vss={vss} 
++ vthresh={vthresh}
+rqq qqqd1 q 1
+eqb qbr 0 value = {if( v(q) > {vthresh}, {vss},{vdd})}
+rqb qbr qb 1 
+cdummy1 q 0 1n 
+cdummy2 qb 0 1n
+.ic v(qint) {vss}
+.model d_d1 d
++ is=1e-015
++ tt=1e-011
++ rs=0.005
++ n=0.01
+.ENDS
+*$
+.SUBCKT FOR_CL_HIERARCHY Ilim_1 GEN HICCUP ILIM RES 
++ HO LO VIN GND 
++ VRAMP SS HICCUP_SS  
+R_R19         N163119542 N16311770  1  
+C_C18         GND N16311718  1n  
+C_C13         GND N16311374  1n  
+R_R16         H_END_1 H_END  1  
+R_R20         N16311794 N16311360  1  
+E_ABM6         ILIM 0 VALUE { if(V(HICCUP)<0.5,V(N16311374),
++ V(HICCUP))}
+C_C20         GND COUNTER  1u IC=0 
+C_C17         GND H_END_1  20n  
+R_R18         N16311658 HICCUP  1  
+X_U612         GEN N16311360 N16311364 AND2_BASIC_GEN 
++ PARAMS: VDD=1 VSS=0
++  VTHRESH=500E-3
+G_ABMII2         N16311806 COUNTER VALUE { if (V(N16311364) >
++ 0.5,1m,0) }
+C_C15         GND N16311430  1n  
+X_U632         RES N163119361 N16311566 COMP_BASIC_GEN 
++ PARAMS: VDD=1 VSS=0
++  VTHRESH=0.5
+C_C19         GND N16311658  1n  
+R_R12         ILIM_1 N16311374  1  
+E_E1         HICCUP_SS GND HICCUP GND 5
+X_U4         N16311566 H_END ONE_SHOT PARAMS:  T=50 
+X_U613         N16311658 N16311636 INV_DELAY_BASIC_GEN 
++ PARAMS: VDD=1 VSS=0
++  VTHRESH=0.5 DELAY=10u
+X_U616         N16311320 N16311718 N163119542 AND2_BASIC_GEN 
++ PARAMS: VDD=1
++  VSS=0 VTHRESH=500E-3
+R_R14         HO N16311430  1  
+E_ABM8         N16313522 0 VALUE { if(V(LO) >3.5,1,0)    }
+X_U3         ILIM_1 N16311794 ONE_SHOT PARAMS:  T=200
+X_U33         N16311690 H_END HICCUP HICCUP_N srlatchrhp_basic_gen 
++ PARAMS:
++  VDD=1 VSS=0 VTHRESH=0.5
+X_S5    N16311482 GND COUNTER GND FOR_CL_S5 
+C_C22         GND N16311360  1n  
+V_V7         N163119361 GND 1.25
+X_U615       COUNTER N16311762 N16311690 COMP_BASIC_GEN 
++ PARAMS: VDD=1 VSS=0
++  VTHRESH=0.5
+R_R21         N16311314 N16311320  120  
+R_R17         N16311442 N16311718  1  
+C_C21         GND N16311770  1n  
+C_C23         GND N16311320  1n  
+V_V9         N16311806 GND 12
+R_R15         ILIM N16311426  1  
+C_C16         GND N16311426  1n  
+X_U32       N16311430 N16311426 N16311442 QB_2 srlatchrhp_basic_gen 
++ PARAMS:
++  VDD=1 VSS=0 VTHRESH=0.5
+E_ABM7         RESET 0 VALUE { IF(V(HO)<V(VIN),V(N16311770),0)    }
+G_G5         GND RES HICCUP GND 10u
+X_S6    H_END_1 GND RES GND FOR_CL_S6 
+X_U649         N16313522 N16311314 d_d1
+X_U650         N16311320 N16313522 d_d1
+V_V8         N16311762 GND 51.2m
+X_U614      N16311658 N16311636 N16311730 AND2_BASIC_GEN 
++ PARAMS: VDD=1 VSS=0
++  VTHRESH=500E-3
+X_U648         RESET N16311730 N16311482 OR2_BASIC_GEN
+.ENDS
+*$
+.subckt FOR_CL_S5 1 2 3 4  
+S_S5         3 4 1 2 _S5
+RS_S5         1 2 1G
+.MODEL         _S5 VSWITCH Roff=1e6 Ron=1.0 Voff=0.25 Von=0.75
+.ends FOR_CL_S5
+*$
+.subckt FOR_CL_S6 1 2 3 4  
+S_S6         3 4 1 2 _S6
+RS_S6         1 2 1G
+.MODEL         _S6 VSWITCH Roff=1e9 Ron=1m Voff=0.25 Von=0.75
+.ends FOR_CL_S6
+*$
+.SUBCKT FOR_VCC GND VCC VCCDIS VIN  
+I_I3         GND N14931274 DC 2.5m  
+X_D19         N14931274 N14931324 d_d1 PARAMS: 
+R_R1         GND VCC  1000k TC=0,0 
+C_C1         GND VCC  2u  
+E_ABM1         N14931324 GND VALUE { if(V(VCCDIS)<1.25,7.6,0)    }
+G_ABM2I2         VIN VCC VALUE { {LIMIT((V(N14931274) - 
++ V(VCC)-0.1)*10m,
++  -30m,30m)}    }
+R_VCCIDS GND VCCDIS  1000k TC=0,0 
+.ENDS
+*$
+.SUBCKT AND2_BASIC_GEN A B Y PARAMS: VDD=5 VSS=0 VTHRESH=2.5 
+E_ABMGATE    YINT 0 VALUE {{IF(V(A) > {VTHRESH}  &  
++ V(B) > {VTHRESH},{VDD},{VSS})}}
+RINT YINT Y 1
+CINT Y 0 1n
+.ENDS AND2_BASIC_GEN
+*$
+.SUBCKT COMP_BASIC_GEN INP INM Y PARAMS: VDD=5 VSS=0 VTHRESH=2.5	
+E_ABM Yint 0 VALUE {IF (V(INP) > 
++ V(INM), {VDD},{VSS})}
+R1 Yint Y 1
+C1 Y 0 1n
+.ENDS COMP_BASIC_GEN
+*$
+.SUBCKT INV_DELAY_BASIC_GEN A  Y PARAMS: VDD=5 VSS=0 
++ VTHRESH=2.5 DELAY = 10n
+E_ABMGATE1    YINT1 0 VALUE {{IF(V(A) > {VTHRESH} , 
++ {VDD},{VSS})}}
+RINT YINT1 YINT2 1
+CINT YINT2 0 {DELAY*1.3}
+E_ABMGATE2    YINT3 0 VALUE {{IF(V(YINT2) > {VTHRESH} , 
++ {VSS},{VDD})}}
+RINT2 YINT3 Y 1
+CINT2 Y 0 1n
+.ENDS INV_DELAY_BASIC_GEN
+*$
+.SUBCKT BUF_BASIC_GEN A  Y PARAMS: VDD=5 VSS=0 VTHRESH=2.5 
+E_ABMGATE    YINT 0 VALUE {{IF(V(A) > {VTHRESH} , 
++ {VDD},{VSS})}}
+RINT YINT Y 1
+CINT Y 0 1n
+.ENDS BUF_BASIC_GEN
+*$
+.SUBCKT OR2_BASIC_GEN A B Y PARAMS: VDD=1 VSS=0 VTHRESH=0.5 
+E_ABMGATE    YINT 0 VALUE {{IF(V(A) > {VTHRESH}  |  
++ V(B) > {VTHRESH},{VDD},{VSS})}}
+RINT YINT Y 1
+CINT Y 0 1n
+.ENDS OR2_BASIC_GEN
+*$
+.SUBCKT D_D1 1 2
+D1 1 2 DD1
+.MODEL DD1 D( IS=1e-15 TT=10p Rs=0.05 N=.1 )
+.ENDS D_D1
+*$
+.SUBCKT INV_BASIC_GEN A  Y PARAMS: VDD=1 VSS=0 VTHRESH=0.5 
+E_ABMGATE    YINT 0 VALUE {{IF(V(A) > {VTHRESH} , 
++ {VSS},{VDD})}}
+RINT YINT Y 1
+CINT Y 0 1n
+.ENDS INV_BASIC_GEN
+*$
+.SUBCKT LDCR IN OUT
++ PARAMs:  L=1u DCR=0.01 IC=0
+L	IN 1  {L} IC={IC}
+RDCR	1 OUT {DCR}
+.ENDS LDCR
+*$

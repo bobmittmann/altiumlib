@@ -1,0 +1,20 @@
+*
+* This spice model was created using the Altium Spice Model Wizard
+* Created: 2:45 PM on 08 February, 2013
+*
+* Component Name: VSMY1850
+*
+.MODEL VSMY1850 D
++(
++     IS = 4.7863E-0003
++      N = 20.9804
++     RS = 0.0000
++)
+
+* Spice model VSMY1850 has been assigned the following parameters:
+
+* Forward-Bias Diode Current Parameters
+*     IS: Saturation Current..................(Unit: A)
+*      N: Emission Coefficient
+*     RS: Ohmic Resistance....................(Unit: Ohm)
+

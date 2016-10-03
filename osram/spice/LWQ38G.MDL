@@ -1,0 +1,20 @@
+*
+* This spice model was created using the Altium Spice Model Wizard
+* Created: 4:56 PM on 14 February, 2013
+*
+* Component Name: LWQ38G
+*
+.MODEL LWQ38G D
++(
++     IS = 1.0000E-0018
++      N = 3.3569
++     RS = 120.4335
++)
+
+* Spice model LWQ38G has been assigned the following parameters:
+
+* Forward-Bias Diode Current Parameters
+*     IS: Saturation Current..................(Unit: A)
+*      N: Emission Coefficient
+*     RS: Ohmic Resistance....................(Unit: Ohm)
+

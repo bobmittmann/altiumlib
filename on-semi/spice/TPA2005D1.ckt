@@ -1,0 +1,41 @@
+**$ENCRYPTED_LIB
+**$INTERFACE
+* PSpice Model Editor - Version 16.0.0
+
+*$
+********************************************************************************
+* Disclaimer
+*
+* This model is designed as an aid for customers of Texas Instruments.
+* TI and its licensors and suppliers make no warranties, either expressed
+* or implied, with respect to this  model, including the warranties of
+* merchantability or fitness for a particular purpose. The model is
+* provided solely on an "as is" basis. The entire risk as to its quality
+* and performance is with the customer.
+********************************************************************************
+* Copyright
+*
+* (C) Copyright 2009 Texas Instruments Incorporated. All rights reserved.
+********************************************************************************
+* Released by: Analog eLab Design Center, Texas Instruments Inc.
+* Part:        TPA2005D1
+* Description: 1.4W Mono Filter-Free Class-D Audio Amplifier 
+* Date:        08/2010
+* Last update
+* by Marcos L. Lopez-Rivera, Texas Instruments, e-Lab, m-lopez18@ti.com 
+* Model Type:  TINA
+* Simulator:   PSpice 16.0.0.p001
+* Datasheet:   SLOS369F-JULY 2002-REVISED JULY 2008
+********************************************************************************
+* TPA2005D1 subckt
+.SUBCKT TPA2005D1  PVDD  IN-  IN+  EN  GND  VO+  VO-
+$CDNENCSTART
+eee8c5c7a2bc4b01f045f303678664e7916da0bae22e8cb0bba041dd67c69ce448ea70148a9ac1670c8926c1ac5057c8ccfcd77bf87ca9dc9c796bc20aa6998e
+f413ba645a02fc7799193bd3a63d45029b4b3d90fde55433d9b41187a069839af4379b91a3cba7fbcbc988b48666a17e495494b797a9cc0e28f3c3a6cfe3b69e
+6bfb5d61ac69ca8fd04e197d04f58eb2843e2ea86fe39246d39de84d29823ccc82e62fa4b4df63410c19f2d86dcb7c9465d5322d426c2b539c796bc20aa6998e
+8548215614db6af332bb098558ea85d75a886340e3d781d786e94281963090682fdcb74f706eaafeaf79822bc4499da042ef62a8d6b93cc0ea9cf8a7695a7caa
+0ab3eab7d19021d238a404c16153b5a1f108233fcb17b8535445e0b5413ad4abde459bf593fdac9984d6a5ef1b42e19cb4712b4758965198493f12ac7f4eeb6b
+d1eef0ba38bb4038cc03afee2436f09bd19dc3da354ada84cb3477784eeb290886e94281963090682fdcb74f706eaafeaf79822bc4499da09e1ce897fd5ba200
+$CDNENCFINISH
+.ENDS  TPA2005D1
+*$

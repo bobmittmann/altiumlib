@@ -1,0 +1,118 @@
+* OPA237 operational amplifier circuit model subcircuit
+
+* Also can be used for OPA2237 (dual) and OPA4237 (quad) op amps
+
+* Rev. A  10/3/96  G.W.
+
+*  ------------------------------------------------------------------------ 
+
+* |  NOTICE: THE INFORMATION PROVIDED HEREIN IS BELIEVED TO BE RELIABLE;   |
+
+* |  HOWEVER; BURR-BROWN ASSUMES NO RESPONSIBILITY FOR INACCURACIES OR     |
+
+* |  OMISSIONS.  BURR-BROWN ASSUMES NO RESPONSIBILITY FOR THE USE OF THIS  |
+
+* |  INFORMATION, AND ALL USE OF SUCH INFORMATION SHALL BE ENTIRELY AT     |
+
+* |  THE USER'S OWN RISK.  NO PATENT RIGHTS OR LICENSES TO ANY OF THE      |
+
+* |  CIRCUITS DESCRIBED HEREIN ARE IMPLIED OR GRANTED TO ANY THIRD PARTY.  |
+
+* |  BURR-BROWN DOES NOT AUTHORIZE OR WARRANT ANY BURR-BROWN PRODUCT FOR   |
+
+* |  USE IN LIFE-SUPPORT DEVICES AND/OR SYSTEMS.                           |
+
+*  ------------------------------------------------------------------------ 
+
+*
+
+* opa237 operational amplifier "macromodel" subcircuit
+
+*
+
+*  connections:   non-inverting input
+
+*                 | inverting input
+
+*                 | | positive power supply
+
+*                 | | | negative power supply
+
+*                 | | | | output
+
+*                 | | | | |
+
+.subckt opa237    1 2 3 4 5
+
+*
+
+J2       4   14  5    QJ 15
+
+R3       11  13  5.0K
+
+Q16      14  11  4    QN
+
+C1       13  14  15.5P
+
+R1       8   12  1.2K
+
+R2       12  9   1.2K
+
+Q6       11  10  4    QN
+
+Q5       10  10  4    QN
+
+Q3       4   2   6    QP
+
+I1       3   6    4U  
+
+I2       3   7    4U  
+
+I3       3   12   10U 
+
+I4       3   14   20U 
+
+ISUP     3   4    35U 
+
+Q4       4   1   7    QP
+
+DCLMPO   14  15   Dx
+
+VCLMPO   3   15   DC 0.65
+
+Q1       10  6   8    QP
+
+Q2       11  7   9    QP
+
+Q17      3   14  5    QN
+
+VCLMPI   3   16   DC 0.65
+
+DCLMPI   12  16   Dx
+
+CDIF     1   2    4P
+
+C2CM     0   2    2P
+
+C1CM     0   1    2P
+
+C2       10  11  15P
+
+*
+
+* Transistor Models
+
+.model Dx D(Is=1.0E-15)
+
+.model QN NPN(Is=1.0E-15 Bf=200)
+
+.model QP PNP(Is=800.0E-18 Bf=500 RB=4K KF=.6F)
+
+.model QJ PJF(Is=6.0E-15 VTO=-1.2 LAMBDA=40M BETA=20.0U)
+
+         
+
+.ENDS
+
+
+
