@@ -1,0 +1,86 @@
+*
+**********************************************************
+*
+* NXP Semiconductors
+*
+* PBSS4240X
+*
+* low VCEsat NPN BISS transistor
+* Ic   = 2.5 A
+* Vceo = 40 V 
+* hFE  = 300 - 900 @ 5V/500mA 
+* 
+*
+*
+*
+* Package pinning does not match Spice model pinning.
+* Package: SOT 89
+*  
+* Package Pin 1: Base
+* Package Pin 2: Collector
+* Package Pin 3: Emitter
+*
+*
+* Extraction date (week/year): 40/2012
+* Simulator: Spice 3
+*
+**********************************************************
+*#
+.SUBCKT PBSS4240X 1 2 3 
+*
+Q1 1 2 3 MAIN 
+D1 2 1 DIODE
+*
+.MODEL MAIN NPN
++ IS = 1.294E-013
++ NF = 0.9752
++ ISE = 7.374E-015
++ NE = 1.608
++ BF = 493.2
++ IKF = 0.4893
++ VAF = 9.12
++ NR = 0.9748
++ ISC = 2.234E-016
++ NC = 0.9613
++ BR = 114.8
++ IKR = 1.29
++ VAR = 13.06
++ RB = 14.5
++ IRB = 0.00035
++ RBM = 8
++ RE = 0.04932
++ RC = 0.1204
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 1.039E-010
++ VJE = 0.7189
++ MJE = 0.3469
++ TF = 4.737E-010
++ XTF = 9
++ VTF = 1.282
++ ITF = 1.659
++ PTF = 0
++ CJC = 2.238E-011
++ VJC = 0.176
++ MJC = 0.3
++ XCJC = 1
++ TR = 1.4E-008
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.99
+.MODEL DIODE D
++ IS = 4.446E-015
++ N = 1.024
++ BV = 1000
++ IBV = 0.001
++ RS = 3013
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ EG = 1.11
++ XTI = 3
+.ENDS

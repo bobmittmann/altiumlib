@@ -1,0 +1,68 @@
+*
+**********************************************************
+*
+* PBSS4032NZ
+*
+* NXP Semiconductors
+*
+* Low VCEsat NPN transistor
+* Ic   = 4,9 A
+* Vceo = 30  V
+* hFE  = min. 300 typ. 500 @ 2V/0,5 A (typical)
+*
+*
+*
+* Package: SOT 223
+*
+* Package Pin 1: Base
+* Package Pin 2: Collector
+* Package Pin 3: Emitter
+* Package Pin 4: Collector
+*
+* Extraction date (week/year): 03/2010
+* Simulator: Spice 3
+*
+**********************************************************
+*#
+.MODEL QPBSS4032NZ NPN
++ IS = 1.265E-012
++ NF = 0.9785
++ ISE = 4.446E-014
++ NE = 1.508
++ BF = 585
++ IKF = 9.5
++ VAF = 80
++ NR = 0.9775
++ ISC = 3.865E-013
++ NC = 1.541
++ BR = 4.395
++ IKR = 1.2
++ VAR = 12.51
++ RB = 12.5
++ IRB = 0.00012
++ RBM = 7
++ RE = 0.02514
++ RC = 0.01049
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 7.413E-010
++ VJE = 0.7065
++ MJE = 0.3445
++ TF = 1.15E-009
++ XTF = 15
++ VTF = 1.3
++ ITF = 1.5
++ PTF = 0
++ CJC = 2.151E-010
++ VJC = 0.501
++ MJC = 0.3892
++ XCJC = 1
++ TR = 5.5E-009
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.9
+.ENDS
+*
+

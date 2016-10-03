@@ -1,0 +1,55 @@
+*
+*******************************************
+*
+*NZH10C
+*
+*NXP Semiconductors
+*
+*Single Zener diode
+*
+*
+*
+*
+*
+*
+*IR    = 0,2µA @ VR = 7V
+*IZSM  =       @ tp =
+*VZmax = 10,2V @ IZ = 20mA
+*
+*
+*
+*
+*
+*
+*
+*Package pinning does not match Spice model pinning.
+*Package: SOD123F
+*
+*Package Pin 1: Cathode
+*Package Pin 2: Anode
+*
+*
+*
+*
+*Simulator: SPICE2
+*
+*******************************************
+*#
+.SUBCKT NZH10C 1 2
+D1 1 2
++ DIODE1
+.MODEL DIODE1 D
++ IS=110.88E-18
++ N=.92657
++ RS=.85899
++ IKF=149.75
++ CJO=57.292E-12
++ M=.33236
++ VJ=.67995
++ ISR=49.142E-12
++ BV=10.124
++ IBV=.72438
++ TT=973.82E-9
+.ENDS
+*
+

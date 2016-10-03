@@ -1,0 +1,50 @@
+*******************************************
+*
+*BAV199
+*
+*NXP Semiconductors
+*
+*Low-leakage double diode 
+*
+*
+*VRRM = 85V
+*IFRM = 500mA @ tp = 1s
+*trr  = 0,8µs
+*
+*
+*Package: SOT23
+*
+*Package Pin 1: Anode 
+*Package Pin 2: Cathode 
+*Package Pin 3: Anode/Cathode 
+*
+*
+*Simulator: PSPICE
+*
+*******************************************
+*#
+
+.SUBCKT BAV199 1 2 3
+
+D1 1 3 DBAV199
+D2 3 2 DBAV199
+
+*
+
+.MODEL DBAV199 D
++ IS=805.84E-18
++ N=1.0246
++ RS=50.000E-3
++ IKF=362.16E-6
++ CJO=1.9002E-12
++ M=.35193
++ VJ=1.2722
++ ISR=298.95E-15
++ BV=113.30
++ IBV=10
++ TT=1.0230E-6
+*##
+*
+
+.ENDS
+

@@ -1,0 +1,91 @@
+*
+**********************************************************
+*
+* BC847CW
+*
+* NXP Semiconductors
+*
+* General purpose NPN transistor
+* IC   = 100 mA
+* VCEO = 45 V 
+* hFE  = 420 - 800 @ 5V/2mA
+* 
+*
+*
+*
+* Package pinning does not match Spice model pinning.
+* Package: SOT 323
+* 
+* Package Pin 1: Base 
+* Package Pin 2: Emitter
+* Package Pin 3: Collector
+* 
+* 
+*
+* Simulator: Spice 2       
+*
+**********************************************************
+*#
+.SUBCKT BC847CW 1 2 3
+*
+Q1 1 2 3 BC847CW
+D1 2 1 DIODE 
+*
+* Diode D1 is dedicated to improve modeling in reverse
+* mode of operation and does not reflect a physical device. 
+*
+.MODEL BC847CW NPN 
++ IS = 2.348E-014 
++ NF = 0.9978 
++ ISE = 1.106E-013 
++ NE = 3.846 
++ BF = 439.2 
++ IKF = 0.04092 
++ VAF = 45 
++ NR = 0.997 
++ ISC = 5.433E-015 
++ NC = 1.162 
++ BR = 15 
++ IKR = 0.01046 
++ VAR = 25 
++ RB = 69.41 
++ IRB = 0.00016 
++ RBM = 1 
++ RE = 0.45 
++ RC = 0.5044 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.12E-011 
++ VJE = 0.6645 
++ MJE = 0.3479 
++ TF = 4.1E-010 
++ XTF = 25 
++ VTF = 2 
++ ITF = 0.18 
++ PTF = 0 
++ CJC = 3.414E-012 
++ VJC = 0.5061 
++ MJC = 0.39 
++ XCJC = 1 
++ TR = 4E-009 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.MODEL DIODE D 
++ IS = 9.376E-016 
++ N = 0.9515 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 800.2 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*
+

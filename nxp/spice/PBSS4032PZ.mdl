@@ -1,0 +1,67 @@
+*
+**********************************************************
+*
+* PBSS4032PZ
+*
+* NXP Semiconductors
+*
+* Low VCEsat PNP BISS transistor
+* Ic   = 4,4 A
+* Vceo = 30  V
+* hFE  = min. 200 typ. 350 @ 2V/0,5 A
+*
+*
+*
+* Package: SOT 223
+*
+* Package Pin 1: Base
+* Package Pin 2: Collector
+* Package Pin 3: Emitter
+* Package Pin 4: Collector
+*
+* Extraction date (week/year): 50/2009
+* Simulator: Spice 3
+*
+**********************************************************
+*#
+.MODEL QPBSS4032PZ PNP
++ IS = 2.322E-012
++ NF = 0.9933
++ ISE = 2.048E-013
++ NE = 1.368
++ BF = 440
++ IKF = 2
++ VAF = 25
++ NR = 0.988
++ ISC = 4.615E-013
++ NC = 1.104
++ BR = 5
++ IKR = 0.5
++ VAR = 11.1
++ RB = 12.9
++ IRB = 0.00105
++ RBM = 0.96
++ RE = 0.025
++ RC = 0.02275
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 5.935E-010
++ VJE = 0.7907
++ MJE = 0.3958
++ TF = 1.53E-009
++ XTF = 5
++ VTF = 2
++ ITF = 1.5
++ PTF = 0
++ CJC = 2.439E-010
++ VJC = 0.39
++ MJC = 0.3204
++ XCJC = 1
++ TR = 2.5E-008
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.9
+.ENDS
+*

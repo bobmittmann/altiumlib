@@ -1,0 +1,81 @@
+.SUBCKT BAV99 1 2 3
+
+XD1 1 3 DBAV99
+XD2 3 2 DBAV99
+
+.ENDS BAV99
+
+*
+*******************************************
+*
+*BAV99
+*
+*NXP Semiconductors
+*
+*High speed switching diode
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*VRRM = 100V
+*IFRM = 500mA
+*trr  = 4ns
+*
+*
+*Package pinning does not match Spice model pinning.
+*Package: SOT23
+*
+*Package Pin 1: Anode          D1
+*Package Pin 2: Cathode        D2
+*Package Pin 3: Cathode; Anode D1; D2
+*
+*
+*
+*Simulator: SPICE3
+*
+*******************************************
+*#
+* Please note: This device is an array and the
+* symbol has to be placed twice on the schematic
+*
+.SUBCKT DBAV99 1 2
+ R1 1 2 5E+009
+ D1 1 2
+ + DIODE1
+ D2 1 2
+ + DIODE2
+
+*The resistor R1 and the diode
+*D2 do not reflect physical
+*devices but improve only
+*modeling in the reverse mode
+*of operation.
+*
+
+.MODEL DIODE1 D
+ + IS = 3.2E-009
+ + N = 1.85
+ + BV = 128
+ + IBV = 9.33E-009
+ + RS = 1.1
+ + CJO = 4.667E-013
+ + VJ = 0.27
+ + M = 0.0226
+ + FC = 0.5
+ + TT = 0
+ + EG = 1.1
+ + XTI = 3
+ .MODEL DIODE2 D
+ + IS = 3E-013
+ + N = 1.1
+ + RS = 280
+ .ENDS
+
+
