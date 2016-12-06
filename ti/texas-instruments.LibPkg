@@ -176,7 +176,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document10]
-DocumentPath=spice\OPA365.ckt
+DocumentPath=ti-interface.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -192,7 +192,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document11]
-DocumentPath=spice\LM7321.ckt
+DocumentPath=spice\OPA365.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -208,7 +208,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document12]
-DocumentPath=spice\VCA810.ckt
+DocumentPath=spice\LM7321.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -224,7 +224,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document13]
-DocumentPath=spice\VCA822.ckt
+DocumentPath=spice\VCA810.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -240,7 +240,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document14]
-DocumentPath=spice\INA138.ckt
+DocumentPath=spice\VCA822.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -256,7 +256,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document15]
-DocumentPath=spice\LM7301.ckt
+DocumentPath=spice\INA138.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -272,7 +272,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document16]
-DocumentPath=spice\OPA209.ckt
+DocumentPath=spice\LM7301.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -288,7 +288,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document17]
-DocumentPath=spice\LMV321.ckt
+DocumentPath=spice\OPA209.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -304,7 +304,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document18]
-DocumentPath=spice\INA193.ckt
+DocumentPath=spice\LMV321.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -320,7 +320,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document19]
-DocumentPath=spice\OPA170.ckt
+DocumentPath=spice\INA193.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -336,7 +336,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document20]
-DocumentPath=spice\OPA137.ckt
+DocumentPath=spice\OPA170.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -352,7 +352,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document21]
-DocumentPath=spice\TLV271.ckt
+DocumentPath=spice\OPA137.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -368,7 +368,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document22]
-DocumentPath=spice\OPA237X.ckt
+DocumentPath=spice\TLV271.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -384,7 +384,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document23]
-DocumentPath=spice\LM324.ckt
+DocumentPath=spice\OPA237X.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -400,7 +400,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document24]
-DocumentPath=spice\OPA336.ckt
+DocumentPath=spice\LM324.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -416,7 +416,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document25]
-DocumentPath=spice\LMV651.ckt
+DocumentPath=spice\OPA336.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -432,7 +432,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document26]
-DocumentPath=spice\LMH6645.ckt
+DocumentPath=spice\LMV651.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -448,7 +448,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document27]
-DocumentPath=spice\SN74LVC2G66-Q1.ckt
+DocumentPath=spice\LMH6645.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -464,7 +464,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document28]
-DocumentPath=spice\LMV641.ckt
+DocumentPath=spice\SN74LVC2G66-Q1.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -480,7 +480,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document29]
-DocumentPath=spice\LMV551.ckt
+DocumentPath=spice\LMV641.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -496,7 +496,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document30]
-DocumentPath=spice\OPA348.ckt
+DocumentPath=spice\LMV551.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -512,7 +512,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document31]
-DocumentPath=ti-interface.SchLib
+DocumentPath=spice\OPA348.ckt
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -556,7 +556,7 @@ OldFormat=False
 [OutputGroup1]
 Name=Netlist Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=CadnetixNetlist
 OutputName1=Cadnetix Netlist
@@ -682,7 +682,7 @@ OutputDefault24=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=AdvSimNetlist
 OutputName1=Mixed Sim
@@ -703,7 +703,7 @@ OutputDefault3=0
 [OutputGroup3]
 Name=Documentation Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Composite
 OutputName1=Composite Drawing
@@ -817,7 +817,7 @@ PageOptions18=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Assembly
 OutputName1=Assembly Drawings
@@ -839,7 +839,7 @@ OutputDefault3=0
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=CompositeDrill
 OutputName1=Composite Drill Drawing
@@ -895,7 +895,7 @@ OutputDefault9=0
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=BOM_PartType
 OutputName1=Bill of Materials
@@ -932,7 +932,7 @@ OutputDefault6=0
 [OutputGroup7]
 Name=Other Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Text Print
 OutputName1=Text Print
@@ -1112,7 +1112,7 @@ PageOptions29=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup8]
 Name=Validation Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Design Rules Check
 OutputName1=Design Rules Check
@@ -1141,7 +1141,7 @@ OutputDefault4=0
 [OutputGroup9]
 Name=Export Outputs
 Description=
-TargetPrinter=\\TANGO\BrotherHL-2140series
+TargetPrinter=HP Color LaserJet Pro M252 PCL 6
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=ExportSTEP
 OutputName1=Export STEP
