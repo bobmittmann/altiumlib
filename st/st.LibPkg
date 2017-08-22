@@ -134,6 +134,9 @@ Name=Default Configuration
 Variant=[No Variations]
 GenerateBOM=0
 
+[Generic_IntLibOptions]
+OldFormat=False
+
 [OutputGroup1]
 Name=Netlist Outputs
 Description=

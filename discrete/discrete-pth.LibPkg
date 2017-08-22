@@ -192,7 +192,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document11]
-DocumentPath=pth-contacts.SchLib
+DocumentPath=pth-contacts.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -208,7 +208,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document12]
-DocumentPath=pth-contacts.PcbLib
+DocumentPath=pth-contacts.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
