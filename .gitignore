@@ -40,3 +40,6 @@
 
 *Project Outputs*/
 
+*.LOG
+*.htm
+*.dll
